@@ -408,6 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingElement.style.display = 'block';
         resultsSection.style.display = 'none';
 
+
         try {
             // Stadtkoordinaten abrufen
             const cityData = await getCityCoordinates(cityName);
