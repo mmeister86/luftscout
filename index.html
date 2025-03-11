@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuftScout.de - Luftqualität in Ihrer Stadt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+
+<body>
+    <!-- Sticky top header -->
+    <header class="sticky-header">
+        <div class="container">
+            <a href="window.location.reload()" id="logo-link" class="logo">Luft<span>Scout</span>.de</a>
+            <div class="top-cities">
+                <ul>
+                    <li><a href="javascript:void(0)" data-city="Berlin">Berlin</a></li>
+                    <li><a href="javascript:void(0)" data-city="Hamburg">Hamburg</a></li>
+                    <li><a href="javascript:void(0)" data-city="München">München</a></li>
+                    <li><a href="javascript:void(0)" data-city="Köln">Köln</a></li>
+                    <li><a href="javascript:void(0)" data-city="Frankfurt am Main">Frankfurt</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page content wrapper -->
+    <div class="page-wrapper">
+        <!-- Left skyscraper ad -->
+        <div class="ad-container ad-skyscraper ad-left">
+            <div class="ad-placeholder">
+                <span>Werbung</span>
+                <p>Skyscraper-Anzeige (200x800)</p>
+            </div>
+        </div>
+
+        <!-- Right skyscraper ad -->
+        <div class="ad-container ad-skyscraper ad-right">
+            <div class="ad-placeholder">
+                <span>Werbung</span>
+                <p>Skyscraper-Anzeige (200x800)</p>
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <main class="container">
+            <section class="intro-section">
+                <h1>Willkommen bei LuftScout.de</h1>
+                <p class="intro-text">
+                    Mit LuftScout erhalten Sie aktuelle Informationen zur Luftqualität in Ihrer Stadt und Umgebung.
+                    Unsere Daten basieren auf den neuesten Messungen und helfen Ihnen, informierte Entscheidungen für Ihre
+                    Gesundheit zu treffen.
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Einfache Suche</h3>
+                        <p>Geben Sie einfach den Namen Ihrer Stadt ein und erhalten Sie sofort aktuelle Luftqualitätsdaten.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🗺️</div>
+                        <h3>Interaktive Karte</h3>
+                        <p>Sehen Sie die Luftqualität im räumlichen Kontext mit unserer farbkodierten Kartendarstellung.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Detaillierte Daten</h3>
+                        <p>Erfahren Sie mehr über verschiedene Schadstoffe und deren Auswirkungen auf Ihre Gesundheit.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="search-section">
+                <h2>Luftqualität in Ihrer Stadt prüfen</h2>
+                <p>Geben Sie den Namen einer Stadt ein, um aktuelle Luftqualitätsdaten zu erhalten:</p>
+
+                <form class="search-form" id="search-form">
+                    <input type="text" id="city-input" placeholder="Stadt eingeben (z.B. Berlin, München)" required
+                        list="german-cities">
+                    <datalist id="german-cities">
+                        <option value="Berlin">
+                        <option value="Hamburg">
+                        <option value="München">
+                        <option value="Köln">
+                        <option value="Frankfurt">
+                        <option value="Stuttgart">
+                        <option value="Düsseldorf">
+                        <option value="Leipzig">
+                        <option value="Dortmund">
+                        <option value="Essen">
+                    </datalist>
+                    <button type="submit">Prüfen</button>
+                </form>
+
+                <div class="error-message" id="error-message"></div>
+            </section>
+
+            <div class="loading" id="loading">Daten werden geladen</div>
+
+            <section class="results-section" id="results-section">
+                <h2 id="city-name">Luftqualität in [Stadt]</h2>
+                <p id="last-updated">Stand: [Datum und Uhrzeit]</p>
+
+                <div class="air-quality-grid">
+                    <!-- Diese Karten werden dynamisch mit JavaScript erstellt -->
+                </div>
+
+                <div class="map-container">
+                    <div id="map"></div>
+                </div>
+            </section>
+
+            <!-- In-content ad 2 -->
+            <div class="ad-container ad-leaderboard">
+                <div class="ad-placeholder">
+                    <span>Werbung</span>
+                    <p>Leaderboard-Anzeige (728x90)</p>
+                </div>
+            </div>
+
+            <section class="info-section">
+                <h2>Was bedeuten die Luftqualitätswerte?</h2>
+
+                <div class="info-grid">
+                    <!-- Karte für PM10 (separat) -->
+                    <div class="info-card">
+                        <h3>Feinstaub (PM10)</h3>
+                        <p>Partikel mit einem Durchmesser unter 10 µm, die hauptsächlich aus Verbrennungsprozessen, Verkehr
+                            und Industrie stammen.</p>
+                        <div class="threshold-info">
+                            <p><strong>Grenzwert:</strong> 40 µg/m³ (Jahresmittel)</p>
+                            <p><strong>Gesundheitsauswirkungen:</strong> Kann in die Lunge gelangen und Atemwegs- und
+                                Herz-Kreislauf-Erkrankungen verursachen.</p>
+                        </div>
+                    </div>
+
+                    <!-- Karte für PM2.5 (separat) -->
+                    <div class="info-card">
+                        <h3>Feinstaub (PM2.5)</h3>
+                        <p>Besonders kleine Partikel unter 2,5 µm, die tiefer in den Körper eindringen können als PM10 und
+                            daher als gefährlicher gelten.</p>
+                        <div class="threshold-info">
+                            <p><strong>Grenzwert:</strong> 25 µg/m³ (Jahresmittel)</p>
+                            <p><strong>Gesundheitsauswirkungen:</strong> Kann bis in die Blutbahn gelangen und zu
+                                chronischen Erkrankungen führen.</p>
+                        </div>
+                    </div>
+
+                    <!-- Karte für NO2 -->
+                    <div class="info-card">
+                        <h3>Stickstoffdioxid (NO₂)</h3>
+                        <p>Entsteht hauptsächlich bei Verbrennungsprozessen in Motoren und Heizungen. Kann die Atemwege
+                            reizen und zu Entzündungen führen.</p>
+                        <div class="threshold-info">
+                            <p><strong>Grenzwert:</strong> 40 µg/m³ (Jahresmittel)</p>
+                            <p><strong>Gesundheitsauswirkungen:</strong> Reizung der Atemwege, erhöhtes Asthma-Risiko,
+                                Verschlechterung von Atemwegserkrankungen.</p>
+                        </div>
+                    </div>
+
+                    <!-- Karte für Ozon -->
+                    <div class="info-card">
+                        <h3>Ozon (O₃)</h3>
+                        <p>Bildet sich bei intensiver Sonneneinstrahlung durch chemische Reaktionen anderer Schadstoffe.
+                            Kann Atemwegsprobleme verursachen und die Lungenleistung verringern.</p>
+                        <div class="threshold-info">
+                            <p><strong>Informationsschwelle:</strong> 180 µg/m³ (1-Stunden-Mittel)</p>
+                            <p><strong>Alarmschwelle:</strong> 240 µg/m³ (1-Stunden-Mittel)</p>
+                        </div>
+                    </div>
+
+                    <!-- Karte für SO2 -->
+                    <div class="info-card">
+                        <h3>Schwefeldioxid (SO₂)</h3>
+                        <p>Entsteht bei der Verbrennung schwefelhaltiger Brennstoffe wie Kohle und Öl. Kann die Atemwege
+                            reizen und zu Entzündungen führen.</p>
+                        <div class="threshold-info">
+                            <p><strong>Grenzwerte:</strong></p>
+                            <ul>
+                                <li>125 µg/m³ (Tagesmittel, max. 3 Überschreitungen pro Jahr)</li>
+                                <li>350 µg/m³ (Stundenmittel, max. 24 Überschreitungen pro Jahr)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Karte für EU-Luftqualitätsindex -->
+                    <div class="info-card">
+                        <h3>Europäischer Luftqualitätsindex</h3>
+                        <p>Ein zusammenfassender Index von 0 bis über 100, der die allgemeine Luftqualität bewertet.</p>
+                        <div class="threshold-info">
+                            <p><strong>Bewertungsskala:</strong></p>
+                            <ul>
+                                <li>0-20: Sehr gut</li>
+                                <li>21-40: Gut</li>
+                                <li>41-60: Mäßig</li>
+                                <li>61-80: Schlecht</li>
+                                <li>81-100: Sehr schlecht</li>
+                                <li>>100: Extrem schlecht</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Gesundheitstipps</h3>
+                    <p>Bei schlechter Luftqualität (Index über 60) sollten empfindliche Personen wie Kinder, ältere Menschen
+                        und Personen mit Atemwegserkrankungen:</p>
+                    <ul>
+                        <li>Anstrengende Aktivitäten im Freien vermeiden</li>
+                        <li>Fenster geschlossen halten, besonders zu Hauptverkehrszeiten</li>
+                        <li>Beim Aufenthalt im Freien eine FFP2-Maske in Betracht ziehen</li>
+                        <li>Auf Anzeichen wie Husten, Atemnot oder Reizungen achten</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer ad -->
+        <div class="ad-container ad-banner ad-footer">
+            <div class="ad-placeholder">
+                <span>Werbung</span>
+                <p>Footer-Banner (970x90)</p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Über LuftScout.de</h3>
+                        <p>LuftScout.de bietet Ihnen aktuelle und zuverlässige Informationen zur Luftqualität in deutschen
+                            Städten. Unser Ziel ist es, das Bewusstsein für Luftverschmutzung zu stärken und Sie bei
+                            gesundheitsbewussten Entscheidungen zu unterstützen.</p>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Weitere Informationen</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Über uns</a></li>
+                            <li><a href="#">Datenschutz</a></li>
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">Kontakt</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Datenquellen</h3>
+                        <p>Alle Luftqualitätsdaten werden von <a href="https://open-meteo.com/"
+                                target="_blank">Open-Meteo</a> bereitgestellt, einem frei zugänglichen Wetter- und
+                            Klimadatendienst.</p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 LuftScout.de - Alle Rechte vorbehalten</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

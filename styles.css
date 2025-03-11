@@ -1,0 +1,643 @@
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #388e3c;
+  --light-color: #f5f5f5;
+  --dark-color: #333;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Sticky header */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.sticky-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.logo span {
+  color: #e0e0e0;
+}
+
+.top-cities {
+  flex-grow: 1;
+}
+
+.top-cities ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+  justify-content: flex-end; /* Align city links to the right */
+}
+
+.top-cities li {
+  margin: 0;
+  padding: 0;
+}
+
+.top-cities a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.top-cities a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .sticky-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 0.5rem;
+  }
+
+  .top-cities {
+    margin-top: 0.5rem;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .top-cities ul {
+    width: max-content;
+  }
+}
+
+main {
+  padding: 2rem 0;
+  margin-top: 1rem; /* Add a small margin after the sticky header */
+}
+
+/* Startseite */
+.intro-section {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.intro-section h1 {
+  color: var(--primary-color);
+  margin-top: 0;
+  font-size: 2.2rem;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  color: var(--secondary-color);
+  margin-top: 0;
+}
+
+/* Info-Bereich */
+.info-section {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.info-section h2 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.info-card h3 {
+  color: var(--secondary-color);
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.threshold-info {
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.threshold-info ul {
+  margin: 5px 0;
+  padding-left: 20px;
+}
+
+.info-box {
+  background-color: #edf7ed;
+  border-left: 4px solid var(--primary-color);
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  margin-top: 2rem;
+}
+
+.info-box h3 {
+  color: var(--secondary-color);
+  margin-top: 0;
+}
+
+.info-box ul {
+  padding-left: 20px;
+}
+
+/* Suchbereich */
+.search-section {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.search-form button {
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Ergebnisbereich */
+.results-section {
+  display: none;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem; /* Erhöhter Abstand zum nächsten Block */
+}
+
+.results-section h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+.air-quality-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .air-quality-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .air-quality-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.air-quality-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.air-quality-card:hover {
+  transform: translateY(-5px);
+}
+
+.air-quality-card h3 {
+  margin-top: 0;
+  color: var(--secondary-color);
+}
+
+.air-quality-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.air-quality-description {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Farbkodierung für Luftqualitätswerte */
+.aqi-good {
+  color: #4caf50;
+}
+
+.aqi-moderate {
+  color: #ffc107;
+}
+
+.aqi-poor {
+  color: #ff5722;
+}
+
+.aqi-very-poor {
+  color: #f44336;
+}
+
+.aqi-extreme {
+  color: #9c27b0;
+}
+
+/* Kartendarstellung */
+.map-container {
+  height: 400px;
+  margin-top: 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+.map-legend {
+  background-color: white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.map-legend h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border-radius: 3px;
+}
+
+/* Meldungen */
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  display: none;
+}
+
+.loading {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading::after {
+  content: "...";
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    content: ".";
+  }
+  40% {
+    content: "..";
+  }
+  60%,
+  100% {
+    content: "...";
+  }
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 2rem 0 1rem;
+  margin-top: 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+  border-bottom: 1px solid #555;
+  padding-bottom: 8px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-section a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #555;
+  padding-top: 1rem;
+}
+
+/* Clean up unused sidebar styles */
+.sidebar,
+.sidebar-header,
+.sidebar .logo,
+.sidebar .logo span,
+.sidebar .top-cities ul,
+.sidebar .top-cities li,
+.sidebar .top-cities a,
+.sidebar .top-cities a:hover,
+.main-content {
+  display: none; /* Not using these anymore */
+}
+
+/* Advertisement Containers */
+.ad-container {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.ad-placeholder {
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+  font-size: 0.9rem;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.ad-placeholder span {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.ad-placeholder p {
+  margin: 0;
+}
+
+/* Ad size variations */
+.ad-banner .ad-placeholder {
+  width: 970px;
+  height: 250px;
+  max-width: 100%;
+}
+
+.ad-leaderboard .ad-placeholder {
+  width: 728px;
+  height: 90px;
+  max-width: 100%;
+}
+
+.ad-rectangle .ad-placeholder {
+  width: 336px;
+  height: 280px;
+}
+
+.ad-square .ad-placeholder {
+  width: 300px;
+  height: 250px;
+}
+
+.ad-footer .ad-placeholder {
+  width: 970px;
+  height: 90px;
+  max-width: 100%;
+}
+
+/* Ad container within info-grid */
+.info-grid .ad-container {
+  margin: 0;
+}
+
+/* Responsive ad adjustments */
+@media (max-width: 992px) {
+  .ad-banner .ad-placeholder,
+  .ad-leaderboard .ad-placeholder,
+  .ad-footer .ad-placeholder {
+    width: 100%;
+    height: auto;
+    min-height: 90px;
+    padding: 1.5rem;
+  }
+
+  .ad-rectangle .ad-placeholder,
+  .ad-square .ad-placeholder {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    padding: 1.5rem;
+  }
+}
+
+/* Page wrapper for main content with relative positioning */
+.page-wrapper {
+  max-width: 1100px; /* Match the container width */
+  margin: 0 auto;
+  position: relative; /* Important for absolute positioning of the ads */
+}
+
+/* Skyscraper ad styles */
+.ad-skyscraper {
+  position: absolute; /* Absolute positioning relative to page-wrapper */
+  top: 120px; /* Space for the header */
+  width: 200px;
+  height: 800px;
+  margin: 0;
+  z-index: 90;
+}
+
+.ad-skyscraper .ad-placeholder {
+  width: 200px;
+  height: 800px;
+  border: 2px dashed #d81b60; /* Pink outline like in the image */
+}
+
+/* Position ads relative to the page wrapper with equal spacing */
+.ad-left {
+  left: -240px; /* Position left of the content area */
+}
+
+.ad-right {
+  right: -240px; /* Position right of the content area */
+}
+
+/* Responsive adjustments for skyscraper ads */
+@media (max-width: 1600px) {
+  .ad-left {
+    left: -225px;
+  }
+
+  .ad-right {
+    right: -225px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .ad-left {
+    left: -210px;
+  }
+
+  .ad-right {
+    right: -210px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .ad-skyscraper {
+    display: none; /* Hide on smaller screens */
+  }
+}
