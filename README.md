@@ -1,7 +1,5 @@
 # LuftScout.de - Luftqualitätsmonitor für deutsche Städte
 
-![LuftScout.de Logo](https://via.placeholder.com/800x200?text=LuftScout.de)
-
 ## Übersicht
 
 LuftScout.de ist eine webbasierte Anwendung zur Überwachung und Visualisierung der Luftqualität in deutschen Städten. Die Plattform bietet Echtzeit-Informationen zu verschiedenen Luftschadstoffen und ermöglicht es Nutzern, fundierte Entscheidungen für ihre Gesundheit zu treffen.
