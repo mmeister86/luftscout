@@ -65,8 +65,8 @@ Dieses Projekt ist unter der MIT-Lizenz lizenziert - siehe die [LICENSE](LICENSE
 
 ## Kontakt
 
-Projektlink: [https://github.com/DEIN-USERNAME/luftscout](https://github.com/DEIN-USERNAME/luftscout)
+Projektlink: [https://github.com/mmeister86/luftscout](https://github.com/mmeister86/luftscout)
 
 ---
 
-&copy; 2023 LuftScout.de - Alle Rechte vorbehalten
+&copy; 2025 LuftScout.de - Alle Rechte vorbehalten
